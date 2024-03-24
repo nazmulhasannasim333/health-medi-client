@@ -21,7 +21,7 @@ export const NavBar = () => {
     <nav className="flex items-center justify-between bg-[#f4f3f3] px-4 py-2 text-white ">
       <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-2xl font-semibold text-black transition-all duration-200 hover:scale-110">
         <Link to="/">
-          <h2>Health Medi</h2>
+          <h2 className="text-indigo-700 font-bold">Health Medi</h2>
         </Link>
       </div>
       <ul className="hidden items-center justify-between gap-10 md:flex text-black">

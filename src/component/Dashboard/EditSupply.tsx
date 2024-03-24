@@ -125,6 +125,20 @@ const EditSupply = ({ supply }: { supply: TSupply }) => {
               </div>
               <div className="space-y-1 text-sm">
                 <label htmlFor="password" className=" ">
+                  Image
+                </label>
+                <input
+                  defaultValue={supply?.img}
+                  {...register("img")}
+                  type="text"
+                  name="img"
+                  id="img"
+                  placeholder="Image link"
+                  className="w-full px-4 py-3 rounded-md border border-indigo-300 focus:outline-none focus:ring  "
+                />
+              </div>
+              <div className="space-y-1 text-sm">
+                <label htmlFor="password" className=" ">
                   Description
                 </label>
                 <textarea
