@@ -9,6 +9,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import DashboardHome from "../component/Dashboard/DashboardHome";
 import AllSupplies from "../component/Dashboard/AllSupplies";
 import AddSupply from "../component/Dashboard/AddSupply";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -31,19 +32,35 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "",
-        element: <DashboardHome />,
+        element: (
+          <ProtectedRoute>
+            <DashboardHome />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "supplies",
-        element: <AllSupplies />,
+        element: (
+          <ProtectedRoute>
+            <AllSupplies />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "create-supply",
-        element: <AddSupply />,
+        element: (
+          <ProtectedRoute>
+            <AddSupply />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

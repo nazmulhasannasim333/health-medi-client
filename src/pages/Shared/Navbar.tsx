@@ -33,10 +33,12 @@ export const NavBar = () => {
           <Link to="/supplies">Supplies</Link>
           <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
         </li>
-        <li className="group flex  cursor-pointer flex-col">
-          <Link to="/dashboard">Dashboard</Link>
-          <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-        </li>
+        {user && (
+          <li className="group flex  cursor-pointer flex-col">
+            <Link to="/dashboard">Dashboard</Link>
+            <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+          </li>
+        )}
         <li className="group flex  cursor-pointer flex-col">
           <button className="bg-indigo-500 text-white px-4 py-2 rounded-md">
             {user ? (
@@ -57,11 +59,16 @@ export const NavBar = () => {
         {dropDownState && (
           <ul className="  gap-2  bg-[#393E46]  absolute right-0 top-11 flex w-[200px] flex-col  rounded-lg   text-base z-50">
             <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
-              <Link to="/"> Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
-              <Link to="/supplies"> Supplies</Link>
+              <Link to="/supplies">Supplies</Link>
             </li>
+            {user && (
+              <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            )}
             <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
               <button className="bg-sky-800 px-4 py-2 rounded-md">
                 {user ? (
