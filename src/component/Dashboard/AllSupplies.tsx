@@ -53,13 +53,13 @@ const AllSupplies = () => {
               className="hover:bg-gray-50 border-b transition duration-300"
             >
               <td className="py-4 px-6 border-b text-xl font-medium">
-                {sup.title}
+                {sup?.title}
               </td>
               <td className="py-4 px-6 border-b text-lg font-medium">
-                {sup.category}
+                {sup?.category}
               </td>
               <td className="py-4 px-6 border-b text-lg font-medium text-center">
-                ${sup.price}
+                ${sup?.price}
               </td>
               <td className="py-4 px-6 border-b ">
                 <EditSupply supply={sup} />

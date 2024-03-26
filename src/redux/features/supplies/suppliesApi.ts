@@ -1,6 +1,6 @@
 import { baseApi } from "../../api/baseApi";
 
-const userApi = baseApi.injectEndpoints({
+const supplyApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllSupplies: builder.query({
       query: () => {
@@ -59,4 +59,4 @@ export const {
   useUpdateSupplyMutation,
   useCreateSupplyMutation,
   useDeleteSupplyMutation,
-} = userApi;
+} = supplyApi;

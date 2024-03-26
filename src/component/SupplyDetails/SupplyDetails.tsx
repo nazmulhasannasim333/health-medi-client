@@ -4,7 +4,6 @@ import DonateModal from "../DonateModal/DonateModal";
 
 const SupplyDetails = () => {
   const params = useParams();
-  console.log(params.id);
   const { data: supplyDetails } = useGetSupplyDetailsQuery(params?.id);
 
   return (

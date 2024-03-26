@@ -34,10 +34,28 @@ export const NavBar = () => {
           <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
         </li>
         {user && (
-          <li className="group flex  cursor-pointer flex-col">
-            <Link to="/dashboard">Dashboard</Link>
-            <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-          </li>
+          <>
+            <li className="group flex  cursor-pointer flex-col">
+              <Link to="/leaderboard">Leaderboard</Link>
+              <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="group flex  cursor-pointer flex-col">
+              <Link to="/volunteer">Volunteer</Link>
+              <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="group flex  cursor-pointer flex-col">
+              <Link to="/community">Community</Link>
+              <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="group flex  cursor-pointer flex-col">
+              <Link to="/about-us">About Us</Link>
+              <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="group flex  cursor-pointer flex-col">
+              <Link to="/dashboard">Dashboard</Link>
+              <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+          </>
         )}
         <li className="group flex  cursor-pointer flex-col">
           <button className="bg-indigo-500 text-white px-4 py-2 rounded-md">
@@ -65,9 +83,23 @@ export const NavBar = () => {
               <Link to="/supplies">Supplies</Link>
             </li>
             {user && (
-              <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
+              <>
+                <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
+                  <Link to="/leaderboard">Leaderboard</Link>
+                </li>
+                <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
+                  <Link to="/volunteer">Volunteer</Link>
+                </li>
+                <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
+                  <Link to="/community">Community</Link>
+                </li>
+                <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
+                  <Link to="/about-us">About Us</Link>
+                </li>
+                <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+              </>
             )}
             <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600">
               <button className="bg-sky-800 px-4 py-2 rounded-md">
