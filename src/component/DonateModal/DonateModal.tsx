@@ -2,20 +2,40 @@ import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
+import { useCreateDonorMutation } from "../../redux/features/donor/donorApi";
 
 const DonateModal = () => {
   const [openModal, setOpenModal] = useState(false);
+  const user = useAppSelector(selectCurrentUser);
+  const [addDonor] = useCreateDonorMutation();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading("Please wait...");
-    if (data) {
-      toast.success("Donation successful!", {
-        id: toastId,
-        duration: 2000,
-      });
-      navigate("/");
+    const price = Number(data?.price);
+    const donorData = { ...data, ...user, price };
+    console.log(donorData);
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const res: any = await addDonor(donorData);
+      console.log(res);
+      if (res?.error) {
+        toast.error(`Something went wrong`, {
+          id: toastId,
+          duration: 2000,
+        });
+      } else {
+        toast.success("Supply created successful!", {
+          id: toastId,
+          duration: 2000,
+        });
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      toast.error("Something went wrong!", { id: toastId, duration: 2000 });
     }
   };
 
@@ -91,10 +111,10 @@ const DonateModal = () => {
                   Amount
                 </label>
                 <input
-                  {...register("amount")}
+                  {...register("price")}
                   type="number"
-                  name="amount"
-                  id="amount"
+                  name="price"
+                  id="price"
                   placeholder="Write a amount"
                   className="w-full px-4 py-3 rounded-md border border-indigo-300 focus:outline-none focus:ring  "
                 />
