@@ -10,6 +10,11 @@ import DashboardHome from "../component/Dashboard/DashboardHome";
 import AllSupplies from "../component/Dashboard/AllSupplies";
 import AddSupply from "../component/Dashboard/AddSupply";
 import ProtectedRoute from "./ProtectedRoute";
+import Leaderboard from "../component/Leaderboard/Leaderboard";
+import Volunteer from "../component/Volunteer/Volunteer";
+import Community from "../component/Community/Community";
+import AboutUs from "../component/AboutUs/AboutUs";
+import Review from "../component/Dashboard/Review";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +28,46 @@ const router = createBrowserRouter([
       {
         path: "/supplies",
         element: <Supplies />,
+      },
+      {
+        path: "/leaderboard",
+        element: (
+          <ProtectedRoute>
+            <Leaderboard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/volunteer",
+        element: (
+          <ProtectedRoute>
+            <Volunteer />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/community",
+        element: (
+          <ProtectedRoute>
+            <Community />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/about-us",
+        element: (
+          <ProtectedRoute>
+            <AboutUs />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/leaderboard",
+        element: (
+          <ProtectedRoute>
+            <Leaderboard />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/supplies/:id",
@@ -59,6 +104,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AddSupply />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "create-testimonial",
+        element: (
+          <ProtectedRoute>
+            <Review />
           </ProtectedRoute>
         ),
       },

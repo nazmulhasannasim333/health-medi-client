@@ -3,6 +3,7 @@ import { RootState } from "../../store";
 
 export type TUser = {
   email: string;
+  name: string;
   iat: number;
   exp: number;
 };
