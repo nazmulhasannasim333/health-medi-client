@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
-import { FaBars } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaBars, FaMoon, FaSun } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { logout, selectCurrentUser } from "../../redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -10,6 +10,26 @@ export const NavBar = () => {
   const [dropDownState, setDropDownState] = useState(false);
   const user = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  useEffect(() => {
+    // Check if user prefers dark mode
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    // Add or remove "dark-mode" class based on user preference and state
+    if (prefersDarkMode || isDarkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [isDarkMode]);
 
   const handleLogout = () => {
     const toastId = toast.loading("loading...");
@@ -50,6 +70,17 @@ export const NavBar = () => {
             )}
           </button>
         </li>
+        <li>
+          {isDarkMode ? (
+            <button onClick={toggleDarkMode}>
+              <FaSun className=" w-6 text-white h-6 mt-2" />
+            </button>
+          ) : (
+            <button onClick={toggleDarkMode}>
+              <FaMoon className=" w-6 text-black h-6 mt-2" />
+            </button>
+          )}
+        </li>
       </ul>
       <div className="relative flex transition-transform md:hidden">
         <FaBars
@@ -79,6 +110,17 @@ export const NavBar = () => {
                   <Link to="/login">Login</Link>
                 )}
               </button>
+            </li>
+            <li>
+              {isDarkMode ? (
+                <button onClick={toggleDarkMode}>
+                  <FaSun className=" w-6 text-white h-6 mt-2" />
+                </button>
+              ) : (
+                <button onClick={toggleDarkMode}>
+                  <FaMoon className=" w-6 text-black h-6 mt-2" />
+                </button>
+              )}
             </li>
           </ul>
         )}
